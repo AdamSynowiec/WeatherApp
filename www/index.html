@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+<!--        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/index.css">
+        <title>WeatherApp</title>
+    </head>
+    <body>
+    <div class="app-location-search-result">
+        <ul class="result">
+        </ul>
+    </div>
+        <div class="app">
+            <div class="app-header">
+                <div class="app-header-navigation">
+
+                </div>
+            </div>
+            <div class="app-content">
+                <div class="app-location-name">
+                    <h2 id="app-result-city"></h2>
+                    <date id="app-result-date"></date>
+                </div>
+                <div class="app-weather-icon">
+                    <img src="">
+                </div>
+                <div class="app-weather-degrees">
+                    <h1 id="app-weather-degrees"></h1>
+                </div>
+                <div class="app-weather-accurate-information">
+                    <div class="app-ai-item">
+                        <span>Temp min</span>
+                        <h4 id="app-weather-temp-min"></h4>
+                    </div>
+                    <div class="app-ai-item">
+                        <span>Humidy</span>
+                        <h4>60%</h4>
+                    </div>
+                    <div class="app-ai-item">
+                        <span>Temp max</span>
+                        <h4 id="app-weather-temp-max">C</h4>
+                    </div>
+                </div>
+                <div class="app-weather-daily">
+                    <div class="app-wd-header">
+                        <h3>Today</h3>
+                        <h3>View report</h3>
+                    </div>
+                    <div class="app-wd-slider">
+
+                    </div>
+                </div>
+            </div>
+            <div class="app-footer">
+                <div class="app-navigation">
+                    <ul>
+                        <li class="app-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.9996 1.66675C6.77876 1.66675 4.16626 4.27925 4.16626 7.50008C4.16626 11.8751 9.9996 18.3334 9.9996 18.3334C9.9996 18.3334 15.8329 11.8751 15.8329 7.50008C15.8329 4.27925 13.2204 1.66675 9.9996 1.66675ZM9.9996 9.58342C8.8496 9.58342 7.91626 8.65008 7.91626 7.50008C7.91626 6.35008 8.8496 5.41675 9.9996 5.41675C11.1496 5.41675 12.0829 6.35008 12.0829 7.50008C12.0829 8.65008 11.1496 9.58342 9.9996 9.58342Z" fill="white"/>
+                            </svg>
+                            <a href="#" data-href="mylocation">My Location</a>
+                        </li>
+                        <li class="app-link" id="search">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z" stroke="#557EAE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17.5002 17.5L13.8752 13.875" stroke="#557EAE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <a href="#" data-href="search">Search</a>
+                        </li>
+                        <li class="app-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.33293 3.33337H3.33293C2.41209 3.33337 1.67459 4.07921 1.67459 5.00004L1.66626 15C1.66626 15.9209 2.41209 16.6667 3.33293 16.6667H16.6663C17.5871 16.6667 18.3329 15.9209 18.3329 15V6.66671C18.3329 5.74587 17.5871 5.00004 16.6663 5.00004H9.99959L8.33293 3.33337Z" fill="#557EAE"/>
+                            </svg>
+
+                            <a href="#" data-href="forcast">Forcast</a>
+                        </li>
+                        <li class="app-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                    <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="#557EAE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.1671 12.5C16.0561 12.7514 16.0231 13.0302 16.0721 13.3005C16.1211 13.5709 16.25 13.8203 16.4421 14.0167L16.4921 14.0667C16.647 14.2215 16.77 14.4053 16.8538 14.6076C16.9377 14.81 16.9809 15.0268 16.9809 15.2459C16.9809 15.4649 16.9377 15.6818 16.8538 15.8841C16.77 16.0864 16.647 16.2703 16.4921 16.425C16.3373 16.58 16.1535 16.7029 15.9511 16.7868C15.7488 16.8707 15.5319 16.9139 15.3129 16.9139C15.0939 16.9139 14.877 16.8707 14.6747 16.7868C14.4723 16.7029 14.2885 16.58 14.1337 16.425L14.0837 16.375C13.8873 16.1829 13.6379 16.0541 13.3676 16.005C13.0972 15.956 12.8184 15.9891 12.5671 16.1C12.3206 16.2057 12.1104 16.3811 11.9623 16.6047C11.8143 16.8282 11.7348 17.0902 11.7337 17.3584V17.5C11.7337 17.9421 11.5581 18.366 11.2456 18.6786C10.933 18.9911 10.5091 19.1667 10.0671 19.1667C9.62505 19.1667 9.20112 18.9911 8.88856 18.6786C8.576 18.366 8.40041 17.9421 8.40041 17.5V17.425C8.39395 17.1492 8.30467 16.8817 8.14416 16.6573C7.98366 16.4329 7.75935 16.2619 7.50041 16.1667C7.24906 16.0558 6.97025 16.0227 6.69992 16.0717C6.42959 16.1207 6.18014 16.2496 5.98374 16.4417L5.93374 16.4917C5.77895 16.6467 5.59514 16.7696 5.39281 16.8535C5.19048 16.9373 4.9736 16.9805 4.75457 16.9805C4.53555 16.9805 4.31867 16.9373 4.11634 16.8535C3.91401 16.7696 3.7302 16.6467 3.57541 16.4917C3.42045 16.3369 3.29751 16.1531 3.21364 15.9508C3.12977 15.7484 3.0866 15.5316 3.0866 15.3125C3.0866 15.0935 3.12977 14.8766 3.21364 14.6743C3.29751 14.472 3.42045 14.2882 3.57541 14.1334L3.62541 14.0834C3.81752 13.887 3.94639 13.6375 3.99541 13.3672C4.04443 13.0969 4.01134 12.8181 3.90041 12.5667C3.79477 12.3202 3.61937 12.11 3.39579 11.962C3.17222 11.8139 2.91023 11.7344 2.64207 11.7334H2.50041C2.05838 11.7334 1.63446 11.5578 1.3219 11.2452C1.00933 10.9327 0.83374 10.5087 0.83374 10.0667C0.83374 9.62468 1.00933 9.20076 1.3219 8.8882C1.63446 8.57564 2.05838 8.40004 2.50041 8.40004H2.57541C2.85124 8.39359 3.11874 8.30431 3.34316 8.1438C3.56757 7.98329 3.7385 7.75899 3.83374 7.50004C3.94467 7.24869 3.97776 6.96988 3.92874 6.69955C3.87973 6.42922 3.75085 6.17977 3.55874 5.98337L3.50874 5.93337C3.35378 5.77859 3.23085 5.59477 3.14697 5.39244C3.0631 5.19011 3.01993 4.97323 3.01993 4.75421C3.01993 4.53518 3.0631 4.3183 3.14697 4.11597C3.23085 3.91364 3.35378 3.72983 3.50874 3.57504C3.66353 3.42008 3.84734 3.29715 4.04967 3.21327C4.252 3.1294 4.46888 3.08623 4.68791 3.08623C4.90693 3.08623 5.12381 3.1294 5.32614 3.21327C5.52847 3.29715 5.71228 3.42008 5.86707 3.57504L5.91707 3.62504C6.11347 3.81715 6.36292 3.94603 6.63325 3.99504C6.90358 4.04406 7.18239 4.01097 7.43374 3.90004H7.50041C7.74688 3.7944 7.95709 3.619 8.10515 3.39543C8.25321 3.17185 8.33267 2.90986 8.33374 2.64171V2.50004C8.33374 2.05801 8.50933 1.63409 8.8219 1.32153C9.13446 1.00897 9.55838 0.833374 10.0004 0.833374C10.4424 0.833374 10.8664 1.00897 11.1789 1.32153C11.4915 1.63409 11.6671 2.05801 11.6671 2.50004V2.57504C11.6681 2.8432 11.7476 3.10519 11.8957 3.32876C12.0437 3.55234 12.2539 3.72774 12.5004 3.83337C12.7518 3.9443 13.0306 3.97739 13.3009 3.92838C13.5712 3.87936 13.8207 3.75049 14.0171 3.55837L14.0671 3.50837C14.2219 3.35341 14.4057 3.23048 14.608 3.14661C14.8103 3.06273 15.0272 3.01956 15.2462 3.01956C15.4653 3.01956 15.6821 3.06273 15.8845 3.14661C16.0868 3.23048 16.2706 3.35341 16.4254 3.50837C16.5804 3.66316 16.7033 3.84698 16.7872 4.04931C16.871 4.25164 16.9142 4.46852 16.9142 4.68754C16.9142 4.90657 16.871 5.12344 16.7872 5.32577C16.7033 5.5281 16.5804 5.71192 16.4254 5.86671L16.3754 5.91671C16.1833 6.11311 16.0544 6.36255 16.0054 6.63288C15.9564 6.90321 15.9895 7.18203 16.1004 7.43337V7.50004C16.206 7.74652 16.3814 7.95672 16.605 8.10478C16.8286 8.25285 17.0906 8.3323 17.3587 8.33337H17.5004C17.9424 8.33337 18.3664 8.50897 18.6789 8.82153C18.9915 9.13409 19.1671 9.55801 19.1671 10C19.1671 10.4421 18.9915 10.866 18.6789 11.1786C18.3664 11.4911 17.9424 11.6667 17.5004 11.6667H17.4254C17.1572 11.6678 16.8953 11.7472 16.6717 11.8953C16.4481 12.0434 16.2727 12.2536 16.1671 12.5V12.5Z" stroke="#557EAE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <rect width="20" height="20" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <a href="#" data-href="settings">Settings</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/jQuery.js"></script>
+        <script src="js/transformData.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
